@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anise & Rye — Neighborhood Bakery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF3E7;
+    --paper: #FFFDF8;
+    --terracotta: #C1622D;
+    --brown: #3B2A20;
+    --sage: #8A9A5B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Karla', sans-serif;
+    line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .logo { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; }
+  .logo span { color: var(--terracotta); }
+  .nav-cta {
+    background: var(--brown);
+    color: var(--paper);
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+  }
+
+  .hero {
+    padding: 60px 24px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .badge {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .badge svg { animation: spin 24s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .badge-center {
+    position: absolute;
+    font-size: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.05;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .hero h1 em { color: var(--terracotta); font-style: italic; }
+  .hero p {
+    color: #6B5744;
+    font-size: 18px;
+    max-width: 480px;
+    margin: 22px auto 0;
+  }
+  .hero-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--paper);
+    font-weight: 600;
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .btn-secondary {
+    color: var(--brown);
+    font-weight: 600;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--terracotta);
+    font-size: 15px;
+  }
+
+  section { padding: 80px 0; }
+  .section-head { text-align: center; margin-bottom: 48px; }
+  .eyebrow {
+    color: var(--terracotta);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: clamp(28px, 4vw, 38px); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+  .menu-card {
+    background: var(--paper);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid rgba(59,42,32,0.08);
+  }
+  .menu-card .tag {
+    display: inline-block;
+    background: rgba(138,154,91,0.15);
+    color: var(--sage);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .menu-card h3 { font-size: 19px; margin-bottom: 8px; }
+  .menu-card p { color: #6B5744; font-size: 14px; margin-bottom: 14px; }
+  .menu-card .price { font-family: 'Fraunces', serif; font-size: 20px; color: var(--terracotta); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    text-align: center;
+  }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: var(--terracotta);
+    opacity: 0.4;
+    margin-bottom: 8px;
+  }
+  .step h3 { font-size: 18px; margin-bottom: 8px; }
+  .step p { color: #6B5744; font-size: 14px; }
+
+  .testimonials { background: var(--paper); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+  }
+  .testi p { font-size: 16px; margin-bottom: 12px; }
+  .testi .who { color: var(--terracotta); font-weight: 600; font-size: 14px; }
+
+  .order-box {
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 44px;
+    max-width: 540px;
+    margin: 0 auto;
+    border: 1px solid rgba(59,42,32,0.08);
+  }
+  .order-box h2 { font-size: 26px; margin-bottom: 6px; }
+  .order-box > p { color: #6B5744; margin-bottom: 28px; font-size: 15px; }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .field input, .field select {
+    width: 100%;
+    border: 1.5px solid rgba(59,42,32,0.15);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    background: var(--cream);
+    color: var(--brown);
+  }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--terracotta); }
+  .field input.error, .field select.error { border-color: #C0392B; }
+  .err-msg { color: #C0392B; font-size: 12.5px; margin-top: 5px; display: none; }
+  .err-msg.show { display: block; }
+  .submit-row { margin-top: 6px; }
+  .submit-row button { width: 100%; }
+  .success-box { display: none; text-align: center; }
+  .success-box.show { display: block; }
+  .success-box .check {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(138,154,91,0.2); color: var(--sage);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 22px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 50px;
+    color: #6B5744;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Anise <span>&</span> Rye</div>
+  <a href="#order" class="nav-cta">Order ahead</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">
+    <svg width="130" height="130" viewBox="0 0 130 130">
+      <defs>
+        <path id="circlePath" d="M 65,65 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" />
+      </defs>
+      <text font-size="10.5" fill="#C1622D" letter-spacing="2" font-family="Karla">
+        <textPath href="#circlePath" startOffset="0%">BAKED FRESH DAILY &bull; EST. 2019 &bull; SLOW DOUGH &bull; </textPath>
+      </text>
+    </svg>
+    <div class="badge-center">🥖</div>
+  </div>
+  <h1>Bread that tastes like <em>someone made it</em>, not a machine.</h1>
+  <p>Small-batch sourdough, laminated pastries, and coffee cake — baked before sunrise, gone by noon.</p>
+  <div class="hero-ctas">
+    <a href="#order" class="btn-primary">Order ahead</a>
+    <a href="#menu" class="btn-secondary">See today's menu</a>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Today's bake</div>
+      <h2>What's coming out of the oven</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <span class="tag">Sourdough</span>
+        <h3>Country loaf</h3>
+        <p>36-hour ferment, crackling crust, open crumb.</p>
+        <div class="price">$9</div>
+      </div>
+      <div class="menu-card">
+        <span class="tag">Pastry</span>
+        <h3>Almond croissant</h3>
+        <p>Laminated dough, frangipane, toasted almonds.</p>
+        <div class="price">$5.50</div>
+      </div>
+      <div class="menu-card">
+        <span class="tag">Cake</span>
+        <h3>Brown butter blondie</h3>
+        <p>Nutty, chewy, finished with flaky salt.</p>
+        <div class="price">$4</div>
+      </div>
+      <div class="menu-card">
+        <span class="tag">Sourdough</span>
+        <h3>Seeded rye</h3>
+        <p>Dense, earthy, caraway and sunflower seed.</p>
+        <div class="price">$10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Order ahead, skip the line</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Order online</h3>
+        <p>Pick your bread and pastries the night before.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We bake it fresh</h3>
+        <p>Everything's made to order, starting at 4am.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Pick up warm</h3>
+        <p>Grab your order from the counter, no waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Regulars say</div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <p>"The rye bread ruined every other bread for me. In the best way."</p>
+        <div class="who">— Elena</div>
+      </div>
+      <div class="testi">
+        <p>"Ordering ahead means I never show up to an empty shelf anymore."</p>
+        <div class="who">— Tom</div>
+      </div>
+      <div class="testi">
+        <p>"My kids ask for the blondies by name now. That's the real review."</p>
+        <div class="who">— Priya</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <div class="order-box">
+      <div id="formView">
+        <h2>Order ahead</h2>
+        <p>Place your order by 8pm for next-morning pickup.</p>
+        <form id="orderForm" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name">
+            <div class="err-msg" id="err-name">Name is required.</div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com">
+            <div class="err-msg" id="err-email">Enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="item">What would you like?</label>
+            <select id="item">
+              <option value="">Select an item</option>
+              <option>Country loaf</option>
+              <option>Almond croissant</option>
+              <option>Brown butter blondie</option>
+              <option>Seeded rye</option>
+            </select>
+            <div class="err-msg" id="err-item">Please select an item.</div>
+          </div>
+          <div class="field">
+            <label for="pickup">Pickup time</label>
+            <input type="text" id="pickup" placeholder="e.g. 8:00 AM">
+            <div class="err-msg" id="err-pickup">Pickup time is required.</div>
+          </div>
+          <div class="submit-row">
+            <button type="submit" class="btn-primary">Place order</button>
+          </div>
+        </form>
+      </div>
+      <div class="success-box" id="successView">
+        <div class="check">&#10003;</div>
+        <h2>Order placed</h2>
+        <p style="margin-top:8px; color:#6B5744;">See you at pickup — it'll be warm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Anise & Rye Bakery &mdash; open Tuesday to Sunday, 7am to 2pm.
+  <div style="margin-top: 14px; opacity: 0.6;">Site by <a href="mailto:stabwoy26@gmail.com" style="color: inherit;">Miracle</a></div>
+</footer>
+
+<script>
+  const form = document.getElementById('orderForm');
+  const formView = document.getElementById('formView');
+  const successView = document.getElementById('successView');
+
+  const fields = {
+    name: { el: document.getElementById('name'), validate: v => v.trim().length > 0 },
+    email: { el: document.getElementById('email'), validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    item: { el: document.getElementById('item'), validate: v => v.trim().length > 0 },
+    pickup: { el: document.getElementById('pickup'), validate: v => v.trim().length > 0 },
+  };
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let allValid = true;
+    for (const key in fields) {
+      const { el, validate } = fields[key];
+      const isValid = validate(el.value);
+      const errEl = document.getElementById('err-' + key);
+      if (!isValid) {
+        el.classList.add('error');
+        errEl.classList.add('show');
+        allValid = false;
+      } else {
+        el.classList.remove('error');
+        errEl.classList.remove('show');
+      }
+    }
+    if (allValid) {
+      formView.style.display = 'none';
+      successView.classList.add('show');
+    }
+  });
+</script>
+
+</body>
+</html>
